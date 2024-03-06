@@ -5,6 +5,7 @@ import cmd
 import shlex
 import models
 
+
 class HBNBCommand(cmd.Cmd):
     """ Handle console monitor class
     Args:
@@ -40,6 +41,7 @@ class HBNBCommand(cmd.Cmd):
         instance = getattr(models, class_name)()
         instance.save()
         print(instance.id)
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
