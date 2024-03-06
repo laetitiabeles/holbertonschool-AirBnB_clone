@@ -9,6 +9,7 @@ class Amenity(BaseModel):
 
     - name (str): The name of the amenity.
 
-    Inherits from the `BaseModel` class, providing common attributes and methods
+    Inherits from the `BaseModel` class,
+    providing common attributes and methods
     for managing object persistence."""
     name = ""
