@@ -27,17 +27,25 @@ class BaseModel:
             storage.new(self)
 
     def __str__(self):
-        """ Base Model string """
+        """ String representation of instance
+        Returns:
+            str: string representation of instance
+        """
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
-        """ Base Model save """
+        """ Updated the public instance attribute
+            updated_at : with the current datetime.
+        """
         self.updated_at = datetime.now()
         from models import storage
         storage.save()
 
     def to_dict(self):
-        """ Base Model dictionary """
+        """ Returning instance dictionnary
+        Returns:
+            dict: Instance dictionary
+        """
         data_dict = self.__dict__.copy()
         data_dict['__class__'] = self.__class__.__name__
         data_dict['created_at'] = self.created_at.isoformat()
