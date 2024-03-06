@@ -38,6 +38,20 @@ This project is the first step of the AirBnB project, which is an AirBnB clone t
 The project currently only implements the back-end console.
 We will not implement all the features, just some of them to cover all the fundamental concepts of the higher level programming track.
 
+This project was assigned to us by Holberton School Tulsa. It is a simple command interpreter to manage the objects used in the AirBnB clone project by:
+
+Allowing for the creation of new objects.
+Allows retrieval of an object from a file, a database, etc.
+Allows operations to be performed on objects
+Allows object attributes to be updated.
+Allows objects to be destroyed.
+The project contains:
+
+A parent class (called BaseModel) used for initialization, serialization, and deserialization of instances.
+Creates a simple flow of serialization/deserialization, as follows: Instance <-> Dictionary <-> JSON string <-> file
+Creation of all subclasses (User, State, City, Amenity, Place, Review)
+Creation of a the first abstracted storage engine of the project: File storage.
+Unittests to validate all classes as well as the storage engine.
 _____________________________________________________________________________________________________________________________
 # Overview
 This is first step for the project AirBnB-Clone called ´The console´.
@@ -74,39 +88,6 @@ ________________________________________________________________________________
 | **models** | **engine** file storage directory. **__init__.py ** Create a unique FileStorage instance for your application. **amenity.py ** Class based on BaseModel. **base_model.py ** Base class that defines all common attributes/methods for other classes. **city.py ** Class based on BaseModel. **place.py ** Class based on BaseModel. **review.py ** Class based on BaseModel. **state.py ** Class based on BaseModel. **user.py ** Class based on BaseModel. |
 | **tests** | **test_models** Test files directory. **__init__.py ** Packages the tests files. |
 
-
-
-
-├── AUTHORS
-├── README.md
-├── console.py
-├── file.json
-├── models
-│   ├── __init__.py
-│   ├── amenity.py
-│   ├── base_model.py
-│   ├── city.py
-│   ├── engine
-│   │   ├── __init__.py
-│   │   └── file_storage.py
-│   ├── place.py
-│   ├── review.py
-│   ├── state.py
-│   └── user.py
-└── tests
-    ├── __init__.py
-    └── test_models
-        ├── __init__.py
-        ├── test_amenity.py
-        ├── test_base_model.py
-        ├── test_city.py
-        ├── test_engine
-        │   ├── __init__.py
-        │   └── test_file_storage.py
-        ├── test_place.py
-        ├── test_review.py
-        ├── test_state.py
-        └── test_user.py
 
 ______________________________________________________________________________________________________________________________
 # Execution
