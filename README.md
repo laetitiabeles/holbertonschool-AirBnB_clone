@@ -40,7 +40,7 @@ We will not implement all the features, just some of them to cover all the funda
 
 _____________________________________________________________________________________________________________________________
 # Overview
-This is first step for the project AirBnB-Clone called ´´The console´´.
+This is first step for the project AirBnB-Clone called ´The console´.
 First we create a command line interpreter like we did in Shell Project.
 Then we have to manage Classes in order to create, show, update and destroy objects.
 
@@ -53,6 +53,7 @@ ________________________________________________________________________________
 # Classes :
 
 HolbertonBnB utilizes the following classes:
+
 
 |     | BaseModel | FileStorage | User | State | City | Amenity | Place | Review |
 | --- | --------- | ----------- | -----| ----- | -----| ------- | ----- | ------ |
@@ -73,6 +74,39 @@ ________________________________________________________________________________
 | **models** | **engine** file storage directory. **__init__.py ** Create a unique FileStorage instance for your application. **amenity.py ** Class based on BaseModel. **base_model.py ** Base class that defines all common attributes/methods for other classes. **city.py ** Class based on BaseModel. **place.py ** Class based on BaseModel. **review.py ** Class based on BaseModel. **state.py ** Class based on BaseModel. **user.py ** Class based on BaseModel. |
 | **tests** | **test_models** Test files directory. **__init__.py ** Packages the tests files. |
 
+
+
+
+├── AUTHORS
+├── README.md
+├── console.py
+├── file.json
+├── models
+│   ├── __init__.py
+│   ├── amenity.py
+│   ├── base_model.py
+│   ├── city.py
+│   ├── engine
+│   │   ├── __init__.py
+│   │   └── file_storage.py
+│   ├── place.py
+│   ├── review.py
+│   ├── state.py
+│   └── user.py
+└── tests
+    ├── __init__.py
+    └── test_models
+        ├── __init__.py
+        ├── test_amenity.py
+        ├── test_base_model.py
+        ├── test_city.py
+        ├── test_engine
+        │   ├── __init__.py
+        │   └── test_file_storage.py
+        ├── test_place.py
+        ├── test_review.py
+        ├── test_state.py
+        └── test_user.py
 
 ______________________________________________________________________________________________________________________________
 # Execution
@@ -109,20 +143,16 @@ EOF  help  quit
 $
 ```
 ______________________________________________________________________________________________________________________________
-# Commands
-
-| CMD   | Description | Usage |
-|--------|--------|--------|
-
-| **`quit`**   | Exit the program | `quit` |
-| **`EOF`**    | Exit the program | `EOF` <br>`Ctrl + D`|
-| **`create`** | Creates new id for a new class | `create <class name>` |
-| **`show`**   |  Prints the string representation of an instance based on the class name  | `show <class name> id`|
-| **`destroy`**| Deletes an instance based on the class name and id | `destroy <class name> id`|
-| **`all`**    | Prints all string representation of all instances based or not on the class name | `all` <br> `all <class name>`|
-| **`update`** | Updates an instance based on the class name and id by adding or updating attribute | `update <class name> <id> <attribute> <value>` |
-| **`help`**   | Displays help manual and usage of command specified | `help` `<command>` <br> `help`|
-
+| Command | Description |
+| -------| ----------- |
+| `quit` | Quits the console |
+| `EOF` | Quits the console |
+| `help` | Displays help page |
+| `create <class>` | Creates a new instance of a given class with a unique ID and saves it to a JSON file |
+| `show <class> <id>` | Prints the string representation of a class instance based on the class name and ID|
+| `destroy <class> <id>` | Deletes and instance based on the class name and id and saves it to a JSON file |
+| `all` | Prints all string representation of all instances based or not on the class name |
+| `update` | Updates an instance based on the class name and id by adding or updating attribute and saves changes to a JSON file |
 
 ______________________________________________________________________________________________________________________________
 ## <p align="center">Authors</p>
@@ -131,3 +161,5 @@ ________________________________________________________________________________
 
 
 # <p align="center">[Mhamed ABDELMALEK ](https://github.com/laetitiabeles/holbertonschool-AirBnB_clone/tree/features/models/models)</p></p>
+
+
