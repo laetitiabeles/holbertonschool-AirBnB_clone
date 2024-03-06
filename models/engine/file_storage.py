@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
 Module defining a new class: FileStorage
-
 This module handles the serialization and deserialization of object instances to and from a JSON file.
 """
 
