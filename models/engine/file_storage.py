@@ -49,7 +49,7 @@ class FileStorage:
         Returns:
             dict: Dictionary containing all stored instances, with keys formatted as "class_name.id".
         """
-        return FileStorage.__objects
+        return self.__objects
 
     def new(self, obj):
         """
@@ -65,7 +65,7 @@ class FileStorage:
             obj (BaseModel): Instance of the `BaseModel` class or its derived classes.
         """
         key = "{}.{}".format(obj.__class__.__name__, obj.id)
-        FileStorage.__objects[key] = obj
+        self.__objects[key] = obj
 
     def save(self):
         """
@@ -82,11 +82,11 @@ class FileStorage:
             >>> storage.save()
         """
         new_dict = {}
-        for key, value in FileStorage.__objects.items():
+        for key, value in self.__objects.items():
             new_dict[key] = value.to_dict()
-        with open(FileStorage.__file_path, "w", encoding="utf-8") as json_file:
-            json_file.truncate(0)
-            json.dump(new_dict, json_file)
+        with open(self.__file_path, "w", encoding="utf-8") as file:
+            file.truncate(0)
+            json.dump(new_dict, file)
 
     def reload(self):
         """
@@ -106,19 +106,10 @@ class FileStorage:
             >>> storage = FileStorage()
         """
         try:
-            with open(self.__file_path, "r") as file:
-                from models.base_model import BaseModel
-                from models.user import User
-                from models.city import City
-                from models.amenity import Amenity
-                from models.state import State
-                from models.review import Review
-                from models.place import Place
-
+            with open(self.__file_path, "r", encoding='utf-8') as file:
                 stamp = json.load(file)
-                for k, v in stamp.items():
-                    self.__objects[k] = eval("{}(**v)".format(
-                        k.split(".")[0]))
+                for key, value in stamp.items():
+                    self.__objects[key] = eval("{}(**value)".format(
+                        key.split(".")[0]))
         except:
             pass
-
