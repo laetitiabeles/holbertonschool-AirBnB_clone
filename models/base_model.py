@@ -46,8 +46,8 @@ class BaseModel:
         Returns:
             dict: Instance dictionary
         """
-        data_dict = self.__dict__.copy()
-        data_dict['__class__'] = self.__class__.__name__
-        data_dict['created_at'] = self.created_at.isoformat()
-        data_dict['updated_at'] = self.updated_at.isoformat()
-        return data_dict
+        dictionnary = self.__dict__.copy()
+        dictionnary['__class__'] = self.__class__.__name__
+        dictionnary['created_at'] = self.created_at.isoformat()
+        dictionnary['updated_at'] = self.updated_at.isoformat()
+        return dictionnary
