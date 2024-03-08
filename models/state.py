@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""State Model"""
+""" State creation """
 
 from models.base_model import BaseModel
 
