@@ -105,11 +105,28 @@ class FileStorage:
         Example usage:
             >>> storage = FileStorage()
         """
+
+        class_mapping = {
+            "BaseModel": BaseModel,
+            "User": User,
+            "State": State,
+            "City": City,
+            "Amenity": Amenity,
+            "Place": Place,
+            "Review": Review,
+        }
+
         try:
-            with open(self.__file_path, "r", encoding='utf-8') as file:
-                stamp = json.load(file)
-                for key, value in stamp.items():
-                    self.__objects[key] = eval("{}(**value)".format(
-                        key.split(".")[0]))
-        except:
+            with open(self.__file_path, 'r') as f:
+                for key, value in json.load(f).items():
+                    obj_class_name = value.get("__class__")
+                    if obj_class_name in class_mapping:
+                        del value["__class__"]
+                        obj_class = class_mapping[obj_class_name]
+                        try:
+                            obj = obj_class(**value)
+                            self.new(obj)
+                        except Exception as e:
+                            print(f"Error loading data from JSON: {e}")
+        except FileNotFoundError:
             pass
