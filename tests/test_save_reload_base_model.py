@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from models import storage  # Assuming models is one directory up
-import BaseModel
+from models.base_model import BaseModel
 
 all_objs = storage.all()
 print("-- Reloaded objects --")
