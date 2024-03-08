@@ -43,7 +43,7 @@ class TestReview(unittest.TestCase):
         """tests if inheriting from BaseModel correctly"""
         review = Review()
         self.assertTrue(issubclass(review.__class__, BaseModel))
-    
+
     def test_one_save(self):
         rv = Review()
         sleep(0.05)

@@ -40,4 +40,3 @@ class TestCity(unittest.TestCase):
     def test_type_attr(self):
         self.assertIsInstance(self.city.state_id, str)
         self.assertIsInstance(self.city.name, str)
-    
