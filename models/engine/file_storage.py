@@ -32,7 +32,7 @@ class FileStorage:
     __file_path = "file.json"
     __objects = {}
 
-    def all(self, line):
+    def all(self):
         """
         Returns the complete __objects dictionary, exposing all stored instances.
 
