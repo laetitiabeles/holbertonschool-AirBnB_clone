@@ -27,14 +27,15 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, line):
+        """Create command to create a new instance of BaseModel"""
         if not line:
             print("** class name missing **")
-        return
+            return
 
         args = shlex.split(line)
         class_name = args[0]
 
-        if line not in models.classes:
+        if class_name not in models.classes:
             print("** class doesn't exist **")
             return
 
