@@ -152,11 +152,20 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return
 
-        attr_name = args[2]
-        attr_value = args[3]
+        for idx in range(2, len(args), 2):
+            attribut_name = args[idx].replace("{", "").replace(":", "")
+            attribut_value = args[idx + 1].replace("}", "")
 
-        setattr(all_objects[key], attr_name, attr_value)
-        models.storage.save()
+            if attribut_name in models.int_attrs:
+                setattr(all_objects[key], attribut_name, int(attribut_value))
+
+            elif attribut_name in models.float_attrs:
+                setattr(all_objects[key], attribut_name, float(attribut_value))
+
+            else:
+                setattr(all_objects[key], attribut_name, attribut_value)
+
+            all_objects[key].save()
 
 
 if __name__ == '__main__':
