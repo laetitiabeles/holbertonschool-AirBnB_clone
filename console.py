@@ -44,6 +44,7 @@ class HBNBCommand(cmd.Cmd):
         print(instance.id)
 
     def do_show(self, line):
+        """Show command to show an instance """
         if not line:
             print("** class name missing **")
             return
@@ -71,6 +72,7 @@ class HBNBCommand(cmd.Cmd):
         print(all_objects[key])
 
     def do_destroy(self, line):
+        """ Destroy an instance """
         if not line:
             print("** class name missing **")
             return
@@ -97,6 +99,24 @@ class HBNBCommand(cmd.Cmd):
 
         del all_objects[key]
         models.storage.save()
+
+    def do_all(self, line):
+        """Print all instances from the storage"""
+        all_objects = models.storage.all()
+
+        if not line:
+            print([str(instance) for instance in all_objects.values()])
+        else:
+            args = shlex.split(line)
+            class_name = args[0]
+
+            if class_name not in models.classes:
+                print("** class doesn't exist **")
+                return
+
+            for instance in all_objects.values():
+                if type(instance).__name__ == class_name:
+                    print(str(instance))
 
 
 if __name__ == '__main__':
