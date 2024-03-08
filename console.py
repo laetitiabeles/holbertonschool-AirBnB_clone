@@ -118,6 +118,45 @@ class HBNBCommand(cmd.Cmd):
                 if type(instance).__name__ == class_name:
                     print(str(instance))
 
+    def do_update(self, line):
+        """Update an instance"""
+        if not line:
+            print("** class name missing **")
+            return
+
+        args = shlex.split(line)
+        class_name = args[0]
+
+        if class_name not in models.classes:
+            print("** class doesn't exist **")
+            return
+
+        if len(args) < 2:
+            print("** instance id missing **")
+            return
+
+        if len(args) < 3:
+            print("** attribute name missing **")
+            return
+
+        if len(args) < 4:
+            print("** value missing **")
+            return
+
+        instance_id = args[1]
+
+        key = "{}.{}".format(class_name, instance_id)
+        all_objects = models.storage.all()
+
+        if key not in all_objects:
+            print("** no instance found **")
+            return
+
+        attr_name = args[2]
+        attr_value = args[3]
+
+        setattr(all_objects[key], attr_name, attr_value)
+        models.storage.save()
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
